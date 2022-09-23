@@ -92,10 +92,10 @@ public class TownResourceDiscoveryController {
         CATEGORY_LOOP:
  		for(ResourceOfferCategory category: TownResourceOffersController.getResourceOfferCategoryList()) { 		    
  		    //Skip category if we have already discovered something in it
- 		    for(String material: alreadyDiscoveredMaterials) {
- 		        if(category.getMaterialsInCategory().contains(material))
-    		        continue CATEGORY_LOOP;
-            }
+// 		    for(String material: alreadyDiscoveredMaterials) {
+// 		        if(category.getMaterialsInCategory().contains(material))
+//    		        continue CATEGORY_LOOP;
+//            }
  	        //Add category as a candidate
  	        candidateCategories.add(category);
         }

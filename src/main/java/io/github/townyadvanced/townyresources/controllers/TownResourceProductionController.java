@@ -199,6 +199,7 @@ public class TownResourceProductionController {
         String material;
         double baseProducedAmount;
         int finalProducedAmount;
+        int existingAmount;
 
         for(int i = 0; i < discoveredResources.size(); i++) {
             material = discoveredResources.get(i);
@@ -209,7 +210,12 @@ public class TownResourceProductionController {
                 baseProducedAmount = allOffers.get(material).getBaseAmountItems();
                 finalProducedAmount = (int)((baseProducedAmount * normalizedBonusesPerResourceLevel.get(i) * cutNormalized) + 0.5);
             }
-            production.put(material, finalProducedAmount);
+            if (production.containsKey(material)) {
+                existingAmount = production.get(material) + finalProducedAmount;
+                production.put(material, existingAmount);
+            } else {
+                production.put(material, finalProducedAmount);
+            }
         }
             
         return production;
